@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+project.ext {
+    supportLibVersion = "27.1.1"
+    daggerVersion = "2.13"
+    butterKnifeVersion = "8.8.1"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
+    lifecycleVersion = "1.1.1"
+    rxPermissionsVersion = "1.0.1"
+    rxAndroidBleVersion = "1.5.0"
+    junitVersion = "4.12"
+    rxJava2ExtrasVersion = "0.1.24"
+    rxJavaBluetooth2Version = "2.0.1"
+}
+
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.rany.albeg.wein.inpris"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$project.supportLibVersion"
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+    // Lifecycle
+    implementation "android.arch.lifecycle:runtime:$project.lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
+    implementation "android.arch.lifecycle:reactivestreams:$project.lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
+    // ButterKnife
+    implementation "com.jakewharton:butterknife:$project.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterKnifeVersion"
+    // ReactiveX
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+    // RxPermissions
+    implementation "com.github.florent37:runtime-permission-rx:$project.rxPermissionsVersion"
+    // RxAndroidBle
+    implementation "com.polidea.rxandroidble2:rxandroidble:$project.rxAndroidBleVersion"
+    // RxBluetooth
+    implementation "com.github.ivbaranov:rxbluetooth2:$project.rxJavaBluetooth2Version"
+    // RxJava2 extras.
+    implementation "com.github.davidmoten:rxjava2-extras:$project.rxJava2ExtrasVersion"
+
+    testImplementation "junit:junit:$project.junitVersion"
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+}

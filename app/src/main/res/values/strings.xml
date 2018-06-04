@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Inpris</string>
+    <string name="discovery_started">Discovery started.</string>
+</resources>
